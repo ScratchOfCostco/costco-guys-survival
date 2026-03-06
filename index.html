@@ -1,376 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Costco Guys Survival</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Costco Guys Survival</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body{
-margin:0;
-font-family:Tahoma, Verdana, Arial, sans-serif;
-background:radial-gradient(circle at top left,#ffb347,#ff8c00,#e46f00,#5a2a00);
-color:#222;
-overflow-x:hidden;
-}
+    body {
+      margin: 0;
+      font-family: Tahoma, Verdana, Arial, sans-serif;
+      background: radial-gradient(circle at top left, #ffb347, #ff8c00, #e46f00, #5a2a00);
+      color: #222;
+      overflow-x: hidden;
+    }
 
-.page{
-width:min(1100px,calc(100% - 20px));
-margin:14px auto;
-background:#fff4df;
-border:4px solid white;
-box-shadow:0 0 18px rgba(0,0,0,.4);
-position:relative;
-}
+    .page {
+      width: min(1100px, calc(100% - 20px));
+      margin: 14px auto;
+      background: #fff4df;
+      border: 4px solid white;
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
 
-/* shopping cart animation */
-.cart{
-position:fixed;
-font-size:40px;
-animation:cartmove 12s linear infinite;
-pointer-events:none;
-}
+    .cart {
+      position: fixed;
+      font-size: 40px;
+      animation: cartmove 12s linear infinite;
+      pointer-events: none;
+      z-index: 999;
+    }
 
-.cart:nth-child(1){top:10%;animation-delay:0s;}
-.cart:nth-child(2){top:40%;animation-delay:4s;}
-.cart:nth-child(3){top:70%;animation-delay:8s;}
+    .cart1 { top: 10%; animation-delay: 0s; }
+    .cart2 { top: 40%; animation-delay: 4s; }
+    .cart3 { top: 70%; animation-delay: 8s; }
 
-@keyframes cartmove{
-0%{left:-80px;transform:rotate(0deg);} 
-50%{transform:rotate(10deg);} 
-100%{left:110%;transform:rotate(0deg);} 
-}
+    @keyframes cartmove {
+      0% {
+        left: -80px;
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(10deg);
+      }
+      100% {
+        left: 110%;
+        transform: rotate(0deg);
+      }
+    }
 
-.topbar{
-background:#ff7a00;
-color:white;
-padding:8px 12px;
-font-size:13px;
-display:flex;
-justify-content:space-between;
-}
+    .topbar {
+      background: #ff7a00;
+      color: white;
+      padding: 8px 12px;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
 
-.header{
-text-align:center;
-padding:20px;
-background:linear-gradient(#fff1d2,#ffd08a,#ff9f2e);
-border-bottom:3px solid #ff7a00;
-}
+    .header {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(#fff1d2, #ffd08a, #ff9f2e);
+      border-bottom: 3px solid #ff7a00;
+    }
 
-h1{
-margin:10px 0;
-font-size:46px;
-color:#ff5a00;
-text-shadow:2px 2px white,4px 4px #8a3b00;
-}
+    h1 {
+      margin: 10px 0;
+      font-size: clamp(34px, 6vw, 46px);
+      color: #ff5a00;
+      text-shadow: 2px 2px white, 4px 4px #8a3b00;
+    }
 
-.tagline{
-font-size:18px;
-color:#8a3b00;
-}
+    .tagline {
+      font-size: 18px;
+      color: #8a3b00;
+    }
 
-.nav{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:10px;
-padding:12px;
-background:#ffd8a8;
-border-bottom:3px solid #ff7a00;
-}
+    .nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 12px;
+      background: #ffd8a8;
+      border-bottom: 3px solid #ff7a00;
+    }
 
-.nav a{
-text-decoration:none;
-padding:8px 14px;
-background:white;
-border:2px solid #ff7a00;
-color:#8a3b00;
-font-size:14px;
-}
+    .nav a {
+      text-decoration: none;
+      padding: 8px 14px;
+      background: white;
+      border: 2px solid #ff7a00;
+      color: #8a3b00;
+      font-size: 14px;
+      border-radius: 6px;
+    }
 
-.layout{
-display:grid;
-grid-template-columns:240px 1fr;
-gap:16px;
-padding:16px;
-}
+    .layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 16px;
+      padding: 16px;
+    }
 
-.sidebar,.panel,.main{
-background:#fff7e8;
-border:3px solid white;
-padding:12px;
-}
+    .sidebar,
+    .panel,
+    .main {
+      background: #fff7e8;
+      border: 3px solid white;
+      padding: 12px;
+      border-radius: 10px;
+    }
 
-.titlebar{
-font-weight:bold;
-margin-bottom:10px;
-color:#ff5a00;
-}
+    .titlebar {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #ff5a00;
+      font-size: 20px;
+    }
 
-.profile-icon{
-width:100%;
-aspect-ratio:1/1;
-display:grid;
-place-items:center;
-font-size:64px;
-background:#ffd08a;
-border:3px solid #ff7a00;
-margin-bottom:10px;
-}
+    .profile-icon {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      font-size: 64px;
+      background: #ffd08a;
+      border: 3px solid #ff7a00;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
 
-.hero{
-display:grid;
-grid-template-columns:1.2fr .8fr;
-gap:16px;
-margin-bottom:16px;
-}
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      margin-bottom: 16px;
+      align-items: start;
+    }
 
-.hero h2{
-margin:0 0 10px;
-font-size:32px;
-color:#ff5a00;
-}
+    .hero h2 {
+      margin: 0 0 10px;
+      font-size: 32px;
+      color: #ff5a00;
+    }
 
-.hero p{
-font-size:17px;
-line-height:1.5;
-}
+    .hero p {
+      font-size: 17px;
+      line-height: 1.5;
+    }
 
-.button-row{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-top:10px;
-}
+    .button-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
 
-.btn{
-padding:10px 14px;
-text-decoration:none;
-border:2px solid #ff7a00;
-background:white;
-font-weight:bold;
-color:#8a3b00;
-}
+    .btn {
+      padding: 10px 14px;
+      border: 2px solid #ff7a00;
+      background: white;
+      font-weight: bold;
+      color: #8a3b00;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
 
-.game-shot{
-min-height:260px;
-background:#ffe6c2;
-border:3px dashed #ff7a00;
-display:grid;
-place-items:center;
-text-align:center;
-font-size:22px;
-font-weight:bold;
-color:#8a3b00;
-padding:14px;
-}
+    .btn:hover {
+      background: #fff0dc;
+    }
 
-.grid-2{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:14px;
-}
+    .game-shot {
+      min-height: 260px;
+      background: #ffe6c2;
+      border: 3px dashed #ff7a00;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #8a3b00;
+      padding: 14px;
+      border-radius: 10px;
+    }
 
-.news-item{
-background:white;
-border:2px solid #ff7a00;
-padding:10px;
-margin-bottom:10px;
-}
+    .embed-box {
+      margin-top: 16px;
+      background: #fff;
+      border: 2px solid #ff7a00;
+      padding: 12px;
+      border-radius: 10px;
+    }
 
-.footer{
-text-align:center;
-padding:16px;
-background:#ff7a00;
-color:white;
-}
+    .embed-box iframe {
+      width: 100%;
+      max-width: 100%;
+      height: 600px;
+      border: 0;
+      display: block;
+      margin: 0 auto;
+      background: white;
+    }
 
-@media(max-width:900px){
-.layout,.hero,.grid-2{
-grid-template-columns:1fr;
-}
-}
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
 
-</style>
+    .news-item {
+      background: white;
+      border: 2px solid #ff7a00;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+
+    .news-item h3 {
+      margin-top: 0;
+      color: #8a3b00;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    #username,
+    #message {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 8px;
+      border: 2px solid #ff7a00;
+      border-radius: 6px;
+      font: inherit;
+      resize: vertical;
+    }
+
+    #messages .msg {
+      border: 2px solid #ff7a00;
+      background: white;
+      padding: 8px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      word-break: break-word;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 16px;
+      background: #ff7a00;
+      color: white;
+      font-weight: bold;
+    }
+
+    @media (max-width: 900px) {
+      .layout,
+      .hero,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .embed-box iframe {
+        height: 420px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="cart cart1">🛒</div>
+  <div class="cart cart2">🛒</div>
+  <div class="cart cart3">🛒</div>
 
-<!-- animated shopping carts -->
-<div class="cart">🛒</div>
-<div class="cart">🛒</div>
-<div class="cart">🛒</div>
+  <div class="page">
+    <div class="topbar">
+      <div>costco guys survival</div>
+      <div>new update</div>
+    </div>
 
-<div class="page">
+    <header class="header">
+      <div class="tagline">costco guys fight skibidi toilets</div>
+      <h1>Costco Guys Survival</h1>
+      <div class="tagline">collect cookies, gain rizzlers, and defeat ski buddies</div>
+    </header>
 
-<div class="topbar">
-<div>costco guys survival</div>
-<div>new update</div>
-</div>
+    <nav class="nav">
+      <a href="#home">home</a>
+      <a href="#game">game</a>
+      <a href="#features">features</a>
+      <a href="#news">news</a>
+      <a href="#fans">fan zone</a>
+    </nav>
 
-<header class="header">
-<div class="tagline">costco guys fight skibidi toilets</div>
-<h1>Costco Guys Survival</h1>
-<div class="tagline">collect cookies, gain rizzlers, and defeat ski buddies</div>
-</header>
+    <section class="layout">
+      <aside class="sidebar">
+        <div class="titlebar">player info</div>
 
-<nav class="nav">
-<a href="#home">home</a>
-<a href="#game">game</a>
-<a href="#features">features</a>
-<a href="#news">news</a>
-<a href="#fans">fan zone</a>
-</nav>
+        <div class="profile-icon">🛒</div>
 
-<section class="layout">
+        <div>below AJ</div>
+        <br />
+        <div>really</div>
+        <div>cool</div>
+        <div>of you for playing the game</div>
+      </aside>
 
-<aside class="sidebar">
-<div class="titlebar">player info</div>
+      <main class="main" id="home">
+        <section class="hero" id="game">
+          <div>
+            <h2>point and click</h2>
+            <p>
+              players control aj by pointing and clicking around the map.
+              collect chocolate chip cookies to get rizzlers that help destroy
+              ski buddies.
+            </p>
 
-<div class="profile-icon">🛒</div>
+            <div class="button-row">
+              <a class="btn" href="https://scratch.mit.edu/projects/1124388577/" target="_blank" rel="noopener noreferrer">play game</a>
+              <a class="btn" href="#features">see features</a>
+            </div>
 
-<div>below AJ</div>
+            <p>
+              link of the game:<br />
+              <a href="https://scratch.mit.edu/projects/1124388577/" target="_blank" rel="noopener noreferrer">
+                https://scratch.mit.edu/projects/1124388577/
+              </a>
+            </p>
+          </div>
 
-<br>
+          <div class="game-shot">
+            Costco Guys<br />
+            vs<br />
+            ski buddies
+          </div>
+        </section>
 
-<div>really</div>
-<div>cool</div>
-<div>of you for playing the game</div>
+        <section class="embed-box">
+          <div class="titlebar">play inside the website</div>
+          <iframe
+            src="https://scratch.mit.edu/projects/1124388577/embed"
+            allowtransparency="true"
+            scrolling="no"
+            allowfullscreen
+            title="Costco Guys Survival Scratch Game">
+          </iframe>
+        </section>
 
-</aside>
+        <div class="grid-2" style="margin-top: 16px;">
+          <section class="panel" id="features">
+            <div class="titlebar">game features</div>
+            <ul>
+              <li>point and click</li>
+              <li>waves of ski buddies enemies</li>
+              <li>costco inside and out</li>
+              <li>goon</li>
+              <li>boss battles</li>
+            </ul>
+          </section>
 
-<main class="main" id="home">
+          <section class="panel">
+            <div class="titlebar">game actions</div>
+            <ul>
+              <li>click to move aj</li>
+              <li>collect chocolate chip cookies</li>
+              <li>spawn rizzlers</li>
+              <li>defeat ski buddies</li>
+              <li>survive waves</li>
+              <li>go outside.... at a price</li>
+            </ul>
+          </section>
+        </div>
 
-<section class="hero" id="game">
+        <section class="panel" id="news" style="margin-top:14px;">
+          <div class="titlebar">news</div>
 
-<div>
-<h2>point and click</h2>
-<p>
-players control aj by pointing and clicking around the map. collect chocolate chip cookies to get rizzlers that help destroy ski buddies
-</p>
+          <div class="news-item">
+            <h3>update v1.1</h3>
+            <p>new warehouse stage and stronger skibidi toilet waves.</p>
+            <p>he made a statement so ASS his gang crucified him🤣</p>
+          </div>
 
-<div class="button-row">
-<a class="btn" href="https://scratch.mit.edu/projects/1124388577/">play game</a>
-<a class="btn" href="#features">see features</a>
-</div>
+          <div class="news-item">
+            <h3>update v1.1 patch notes</h3>
+            <p>A.J.: Fighting Ski Buddies indoors is reallyyy getting boring</p>
+            <p>Big Jusrice: Yeah I know, we have not been outside for a whole year!</p>
+            <p>Costco Worker: The Outdoors are finally open! Good luck on the Tsunamis and Ski Buddies, Costco Guys!</p>
+          </div>
+        </section>
 
-<p>
-link of the game is:<br>
-<a href="https://scratch.mit.edu/projects/1124388577/">https://scratch.mit.edu/projects/1124388577/</a>
-</p>
+        <section class="panel" id="fans" style="margin-top:14px;">
+          <div class="titlebar">fan zone</div>
 
-</div>
+          <input id="username" placeholder="username" />
+          <textarea id="message" rows="4" placeholder="message"></textarea>
+          <button class="btn" onclick="postMessage()">post message</button>
 
-<div class="game-shot">
-Costco Guys<br>
-vs<br>
-ski buddies<br><br>
-</div>
+          <div id="messages" style="margin-top:16px;"></div>
+        </section>
+      </main>
+    </section>
 
-</section>
+    <footer class="footer">
+      Costco Guys Survival
+    </footer>
+  </div>
 
-<div class="grid-2">
+  <script>
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
 
-<section class="panel" id="features">
-<div class="titlebar">game features</div>
-<ul>
-<li>point and click(louder)</li>
-<li>waves of skibudies enemies</li>
-<li>costco inside and out</li>
-<li>goon</li>
-<li>boss battles</li>
-</ul>
-</section>
+    function loadMessages() {
+      const saved = JSON.parse(localStorage.getItem("fanMessages") || "[]");
+      const container = document.getElementById("messages");
+      container.innerHTML = "";
 
-<section class="panel">
-<div class="titlebar">game actions</div>
-<ul>
-<li>click to move aj</li>
-<li>collect chocolate chip cookies</li>
-<li>spawn rizzlers</li>
-<li>defeat ski buddies</li>
-<li>survive waves</li>
-<li>go outside.... at a price</li>
-</ul>
-</section>
+      saved.forEach((m) => {
+        const div = document.createElement("div");
+        div.className = "msg";
+        div.innerHTML = "<strong>" + escapeHtml(m.name) + ":</strong> " + escapeHtml(m.text);
+        container.appendChild(div);
+      });
+    }
 
-</div>
+    function postMessage() {
+      const nameInput = document.getElementById("username");
+      const messageInput = document.getElementById("message");
 
-<section class="panel" id="news" style="margin-top:14px;">
-<div class="titlebar">news</div>
+      const name = nameInput.value.trim();
+      const text = messageInput.value.trim();
 
-<div class="news-item">
-<h3>update v1.1</h3>
-<p>new warehouse stage and stronger skibidi toilet waves.</p>
-<p>he made a statement so ASS his gang crucified him🤣</p>
-</div>
+      if (!name || !text) return;
 
-<div class="news-item">
-<h3>update v1.1 patch notes</h3>
-<p>
-A.J.: Fighting Ski Buddies indoors is reallyyy getting boring
-</p>
-<p>
-Big Jusrice: Yeah I know, we have not been outside for a whole year!
-</p>
-<p>
-Costco Worker: The Outdoors are finally open! Good luck on the Tsunamis and Ski Buddies, Costco Guys!
-</p>
-</div>
+      const saved = JSON.parse(localStorage.getItem("fanMessages") || "[]");
+      saved.push({ name, text });
+      localStorage.setItem("fanMessages", JSON.stringify(saved));
 
-</section>
+      messageInput.value = "";
+      loadMessages();
+    }
 
-<section class="panel" id="fans" style="margin-top:14px;">
-<div class="titlebar">fan zone</div>
-<input id="username" style="width:100%;padding:8px;margin-bottom:8px;border:2px solid #ff7a00;" placeholder="username">
-<textarea id="message" style="width:100%;padding:8px;border:2px solid #ff7a00;" rows="4" placeholder="message"></textarea>
-<br><br>
-<button class="btn" onclick="postMessage()">post message</button>
+    document.getElementById("message").addEventListener("keydown", function (e) {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        postMessage();
+      }
+    });
 
-<div id="messages" style="margin-top:16px;"></div>
-</section>
-
-</main>
-
-</section>
-
-<footer class="footer">
-Costco Guys Survival
-</footer>
-
-</div>
-
-<script>
-function loadMessages(){
-  const saved = JSON.parse(localStorage.getItem('fanMessages') || '[]');
-  const container = document.getElementById('messages');
-  container.innerHTML='';
-  saved.forEach(m=>{
-    const div=document.createElement('div');
-    div.style.border='2px solid #ff7a00';
-    div.style.padding='8px';
-    div.style.marginBottom='8px';
-    div.innerHTML='<strong>'+m.name+':</strong> '+m.text;
-    container.appendChild(div);
-  });
-}
-
-function postMessage(){
-  const name=document.getElementById('username').value.trim();
-  const text=document.getElementById('message').value.trim();
-  if(!name || !text) return;
-
-  const saved = JSON.parse(localStorage.getItem('fanMessages') || '[]');
-  saved.push({name,text});
-  localStorage.setItem('fanMessages',JSON.stringify(saved));
-
-  document.getElementById('message').value='';
-  loadMessages();
-}
-
-loadMessages();
-</script>
+    loadMessages();
+  </script>
 </body>
 </html>
-
-

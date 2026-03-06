@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costco Guys Survival</title>
+<style>
+
+body{
+margin:0;
+font-family:Tahoma, Verdana, Arial, sans-serif;
+background:radial-gradient(circle at top left,#ffb347,#ff8c00,#e46f00,#5a2a00);
+color:#222;
+overflow-x:hidden;
+}
+
+.page{
+width:min(1100px,calc(100% - 20px));
+margin:14px auto;
+background:#fff4df;
+border:4px solid white;
+box-shadow:0 0 18px rgba(0,0,0,.4);
+position:relative;
+}
+
+/* shopping cart animation */
+.cart{
+position:fixed;
+font-size:40px;
+animation:cartmove 12s linear infinite;
+pointer-events:none;
+}
+
+.cart:nth-child(1){top:10%;animation-delay:0s;}
+.cart:nth-child(2){top:40%;animation-delay:4s;}
+.cart:nth-child(3){top:70%;animation-delay:8s;}
+
+@keyframes cartmove{
+0%{left:-80px;transform:rotate(0deg);} 
+50%{transform:rotate(10deg);} 
+100%{left:110%;transform:rotate(0deg);} 
+}
+
+.topbar{
+background:#ff7a00;
+color:white;
+padding:8px 12px;
+font-size:13px;
+display:flex;
+justify-content:space-between;
+}
+
+.header{
+text-align:center;
+padding:20px;
+background:linear-gradient(#fff1d2,#ffd08a,#ff9f2e);
+border-bottom:3px solid #ff7a00;
+}
+
+h1{
+margin:10px 0;
+font-size:46px;
+color:#ff5a00;
+text-shadow:2px 2px white,4px 4px #8a3b00;
+}
+
+.tagline{
+font-size:18px;
+color:#8a3b00;
+}
+
+.nav{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px;
+padding:12px;
+background:#ffd8a8;
+border-bottom:3px solid #ff7a00;
+}
+
+.nav a{
+text-decoration:none;
+padding:8px 14px;
+background:white;
+border:2px solid #ff7a00;
+color:#8a3b00;
+font-size:14px;
+}
+
+.layout{
+display:grid;
+grid-template-columns:240px 1fr;
+gap:16px;
+padding:16px;
+}
+
+.sidebar,.panel,.main{
+background:#fff7e8;
+border:3px solid white;
+padding:12px;
+}
+
+.titlebar{
+font-weight:bold;
+margin-bottom:10px;
+color:#ff5a00;
+}
+
+.profile-icon{
+width:100%;
+aspect-ratio:1/1;
+display:grid;
+place-items:center;
+font-size:64px;
+background:#ffd08a;
+border:3px solid #ff7a00;
+margin-bottom:10px;
+}
+
+.hero{
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:16px;
+margin-bottom:16px;
+}
+
+.hero h2{
+margin:0 0 10px;
+font-size:32px;
+color:#ff5a00;
+}
+
+.hero p{
+font-size:17px;
+line-height:1.5;
+}
+
+.button-row{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:10px;
+}
+
+.btn{
+padding:10px 14px;
+text-decoration:none;
+border:2px solid #ff7a00;
+background:white;
+font-weight:bold;
+color:#8a3b00;
+}
+
+.game-shot{
+min-height:260px;
+background:#ffe6c2;
+border:3px dashed #ff7a00;
+display:grid;
+place-items:center;
+text-align:center;
+font-size:22px;
+font-weight:bold;
+color:#8a3b00;
+padding:14px;
+}
+
+.grid-2{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px;
+}
+
+.news-item{
+background:white;
+border:2px solid #ff7a00;
+padding:10px;
+margin-bottom:10px;
+}
+
+.footer{
+text-align:center;
+padding:16px;
+background:#ff7a00;
+color:white;
+}
+
+@media(max-width:900px){
+.layout,.hero,.grid-2{
+grid-template-columns:1fr;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- animated shopping carts -->
+<div class="cart">🛒</div>
+<div class="cart">🛒</div>
+<div class="cart">🛒</div>
+
+<div class="page">
+
+<div class="topbar">
+<div>official site for the costco guys scratch game</div>
+<div>new update live</div>
+</div>
+
+<header class="header">
+<div class="tagline">a scratch programming game where the costco guys fight skibidi toilets</div>
+<h1>Costco Guys Survival</h1>
+<div class="tagline">collect cookies, gain rizzlers, and defeat ski buddies</div>
+</header>
+
+<nav class="nav">
+<a href="#home">home</a>
+<a href="#game">game</a>
+<a href="#features">features</a>
+<a href="#news">news</a>
+<a href="#fans">fan zone</a>
+</nav>
+
+<section class="layout">
+
+<aside class="sidebar">
+<div class="titlebar">player info</div>
+
+<div class="profile-icon">🛒</div>
+
+<div>rank: mega member</div>
+
+<br>
+
+<div>enemy: skibidi toilets</div>
+<div>map: costco warehouse</div>
+<div>weapon: hotdog throw</div>
+
+</aside>
+
+<main class="main" id="home">
+
+<section class="hero" id="game">
+
+<div>
+<h2>point and click battle game</h2>
+<p>
+players control aj by pointing and clicking around the map. collect chocolate chip cookies to gain rizzlers that help destroy ski buddies and skibidi toilets.
+</p>
+
+<div class="button-row">
+<a class="btn" href="https://scratch.mit.edu/projects/1124388577/">play game</a>
+<a class="btn" href="#features">see features</a>
+</div>
+
+<p>
+link of the game is:<br>
+<a href="https://scratch.mit.edu/projects/1124388577/">https://scratch.mit.edu/projects/1124388577/</a>
+</p>
+
+</div>
+
+<div class="game-shot">
+warehouse boss fight<br>
+vs<br>
+skibidi toilets<br><br>
+[ drag blocks to attack ]
+</div>
+
+</section>
+
+<div class="grid-2">
+
+<section class="panel" id="features">
+<div class="titlebar">game features</div>
+<ul>
+<li>point and click movement</li>
+<li>waves of skibidi toilet enemies</li>
+<li>costco warehouse level</li>
+<li>power ups and combo attacks</li>
+<li>boss battles</li>
+</ul>
+</section>
+
+<section class="panel">
+<div class="titlebar">game actions</div>
+<ul>
+<li>click to move aj</li>
+<li>collect chocolate chip cookies</li>
+<li>spawn rizzlers</li>
+<li>defeat ski buddies</li>
+<li>survive waves</li>
+</ul>
+</section>
+
+</div>
+
+<section class="panel" id="news" style="margin-top:14px;">
+<div class="titlebar">news</div>
+
+<div class="news-item">
+<h3>update v1.1</h3>
+<p>new warehouse stage and stronger skibidi toilet waves.</p>
+<p>he made a statement so ASS his gang crucified him🤣</p>
+</div>
+
+<div class="news-item">
+<h3>update v1.1 patch notes</h3>
+<p>
+A.J.: Fighting Ski Buddies indoors is reallyyy getting boring
+</p>
+<p>
+Big Jusrice: Yeah I know, we have not been outside for a whole year!
+</p>
+<p>
+Costco Worker: The Outdoors are finally open! Good luck on the Tsunamis and Ski Buddies, Costco Guys!
+</p>
+</div>
+
+</section>
+
+<section class="panel" id="fans" style="margin-top:14px;">
+<div class="titlebar">fan zone</div>
+<input id="username" style="width:100%;padding:8px;margin-bottom:8px;border:2px solid #ff7a00;" placeholder="username">
+<textarea id="message" style="width:100%;padding:8px;border:2px solid #ff7a00;" rows="4" placeholder="message"></textarea>
+<br><br>
+<button class="btn" onclick="postMessage()">post message</button>
+
+<div id="messages" style="margin-top:16px;"></div>
+</section>
+
+</main>
+
+</section>
+
+<footer class="footer">
+Costco Guys Survival
+</footer>
+
+</div>
+
+<script>
+function loadMessages(){
+  const saved = JSON.parse(localStorage.getItem('fanMessages') || '[]');
+  const container = document.getElementById('messages');
+  container.innerHTML='';
+  saved.forEach(m=>{
+    const div=document.createElement('div');
+    div.style.border='2px solid #ff7a00';
+    div.style.padding='8px';
+    div.style.marginBottom='8px';
+    div.innerHTML='<strong>'+m.name+':</strong> '+m.text;
+    container.appendChild(div);
+  });
+}
+
+function postMessage(){
+  const name=document.getElementById('username').value.trim();
+  const text=document.getElementById('message').value.trim();
+  if(!name || !text) return;
+
+  const saved = JSON.parse(localStorage.getItem('fanMessages') || '[]');
+  saved.push({name,text});
+  localStorage.setItem('fanMessages',JSON.stringify(saved));
+
+  document.getElementById('message').value='';
+  loadMessages();
+}
+
+loadMessages();
+</script>
+</body>
+</html>
